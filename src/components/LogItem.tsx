@@ -6,7 +6,7 @@ export interface logProps {
     message: string,
 }
 
-function LogItem({ level, source, timestamp, message }: logProps) {
+export default function LogItem({ level, source, timestamp, message }: logProps) {
 
     // Format timestamp - M/D/Y, 0:00:00 PM
     function formatTimestamp(timestamp: string): string {
@@ -33,5 +33,3 @@ function LogItem({ level, source, timestamp, message }: logProps) {
         </div>
     )
 }
-
-export default LogItem;  

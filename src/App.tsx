@@ -1,6 +1,10 @@
 import "./index.css";
+import LogsContainer, { LogsContainerProps } from "./components/LogsContainer";
 
 export function App() {
+
+
+
   return (
     <div className="app">
       <div className="main-container">
