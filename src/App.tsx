@@ -3,7 +3,11 @@ import "./index.css";
 export function App() {
   return (
     <div className="app">
-      <h1>Hello World!</h1>
+      <div className="main-container">
+        <div className="title-container">
+
+        </div>
+      </div>
     </div>
   );
 }
