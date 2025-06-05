@@ -1,4 +1,5 @@
-interface logProps {
+export interface logProps {
+    id: string,
     level: "ERROR" | "WARN" | "INFO" | "DEBUG",
     source: string,
     timestamp: string,
@@ -7,6 +8,11 @@ interface logProps {
 
 function LogItem({ level, source, timestamp, message }: logProps) {
 
+    // Format timestamp - M/D/Y, 0:00:00 PM
+    function formatTimestamp(timestamp: string): string {
+        const date = new Date(timestamp);
+        return date.toLocaleString();
+    }
 
     return (
         // A single log row
@@ -16,16 +22,16 @@ function LogItem({ level, source, timestamp, message }: logProps) {
                 <span>{level}</span>
             </div>
             <div className="log-item-source">
-                <h3>{source}</h3>
+                <span>{source}</span>
             </div>
             <div className="log-item-timestamp">
-                <h3>{timestamp}</h3>
+                <span>{formatTimestamp(timestamp)}</span>
             </div>
             <div className="log-item-message">
-                <h3>{message}</h3>
+                <span>{message}</span>
             </div>
         </div>
     )
 }
 
-export default LogItem; 
+export default LogItem;  
