@@ -1,6 +1,6 @@
 export interface logProps {
     id: string,
-    level: "ERROR" | "WARN" | "INFO" | "DEBUG",
+    level: string,
     source: string,
     timestamp: string,
     message: string,
@@ -18,7 +18,7 @@ export default function LogItem({ level, source, timestamp, message }: logProps)
         // A single log row
         <div className="log-item-container">
             <div className="log-item-level">
-                <img src="" />
+                {/* <img src="" /> */}
                 <span>{level}</span>
             </div>
             <div className="log-item-source">

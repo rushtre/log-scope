@@ -1,15 +1,23 @@
+import { useState } from "react";
+import log_data from "./data/log_data.json";
 import "./index.css";
 import LogsContainer, { LogsContainerProps } from "./components/LogsContainer";
+import { FaTerminal } from "react-icons/fa6";
+
 
 export function App() {
 
-
+  const [logs, setLogs] = useState(log_data.logs)
 
   return (
     <div className="app">
       <div className="main-container">
-        <div className="title-container">
-
+        <div className="sub-container">
+          <div className="title-container">
+            <span><FaTerminal size={25} /></span>
+            <h3>Logs</h3>
+          </div>
+          <LogsContainer logs={logs} />
         </div>
       </div>
     </div>
