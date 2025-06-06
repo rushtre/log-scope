@@ -570,6 +570,386 @@
                 "report",
                 "cron"
             ]
+        },
+        {
+            "id": "log_031",
+            "timestamp": "2025-06-05T14:25:25.234Z",
+            "level": "DEBUG",
+            "source": "kubernetes-cluster",
+            "application": "pod-autoscaler",
+            "message": "Pod scaling event: Increased replicas from 3 to 5",
+            "user_id": null,
+            "ip_address": "10.244.0.15",
+            "response_time": 89,
+            "status_code": null,
+            "endpoint": null,
+            "method": null,
+            "tags": [
+                "kubernetes",
+                "scaling",
+                "pods"
+            ]
+        },
+        {
+            "id": "log_032",
+            "timestamp": "2025-06-05T14:25:12.567Z",
+            "level": "ERROR",
+            "source": "web-server-02",
+            "application": "customer-service",
+            "message": "Customer profile update failed: Validation error on phone number",
+            "user_id": "user_45672",
+            "ip_address": "10.0.0.25",
+            "response_time": 2340,
+            "status_code": 422,
+            "endpoint": "/api/customer/profile",
+            "method": "PATCH",
+            "tags": [
+                "customer",
+                "validation",
+                "profile"
+            ]
+        },
+        {
+            "id": "log_033",
+            "timestamp": "2025-06-05T14:24:58.890Z",
+            "level": "INFO",
+            "source": "metrics-collector",
+            "application": "prometheus",
+            "message": "Metrics scraped successfully: 2,847 data points collected",
+            "user_id": null,
+            "ip_address": "172.16.8.90",
+            "response_time": 567,
+            "status_code": null,
+            "endpoint": null,
+            "method": null,
+            "tags": [
+                "metrics",
+                "prometheus",
+                "monitoring"
+            ]
+        },
+        {
+            "id": "log_034",
+            "timestamp": "2025-06-05T14:24:45.123Z",
+            "level": "WARN",
+            "source": "redis-cluster",
+            "application": "redis-sentinel",
+            "message": "Master failover initiated: redis-master-01 unresponsive",
+            "user_id": null,
+            "ip_address": "172.16.9.100",
+            "response_time": null,
+            "status_code": null,
+            "endpoint": null,
+            "method": null,
+            "tags": [
+                "redis",
+                "failover",
+                "high-availability"
+            ]
+        },
+        {
+            "id": "log_035",
+            "timestamp": "2025-06-05T14:24:32.456Z",
+            "level": "INFO",
+            "source": "web-server-01",
+            "application": "wishlist-service",
+            "message": "Item added to wishlist successfully",
+            "user_id": "user_88765",
+            "ip_address": "192.168.1.45",
+            "response_time": 134,
+            "status_code": 201,
+            "endpoint": "/api/wishlist/add",
+            "method": "POST",
+            "tags": [
+                "wishlist",
+                "user-action",
+                "success"
+            ]
+        },
+        {
+            "id": "log_036",
+            "timestamp": "2025-06-05T14:24:18.789Z",
+            "level": "ERROR",
+            "source": "email-service",
+            "application": "sendgrid-integration",
+            "message": "Email delivery failed: Invalid recipient address",
+            "user_id": "user_33221",
+            "ip_address": "203.0.113.55",
+            "response_time": 1890,
+            "status_code": 400,
+            "endpoint": "/api/email/send",
+            "method": "POST",
+            "tags": [
+                "email",
+                "delivery",
+                "validation-error"
+            ]
+        },
+        {
+            "id": "log_037",
+            "timestamp": "2025-06-05T14:24:05.012Z",
+            "level": "DEBUG",
+            "source": "content-delivery",
+            "application": "aws-cloudfront",
+            "message": "Cache hit ratio: 94.2% for last 1000 requests",
+            "user_id": null,
+            "ip_address": "54.230.45.67",
+            "response_time": 23,
+            "status_code": null,
+            "endpoint": null,
+            "method": null,
+            "tags": [
+                "cdn",
+                "cache",
+                "performance"
+            ]
+        },
+        {
+            "id": "log_038",
+            "timestamp": "2025-06-05T14:23:52.345Z",
+            "level": "INFO",
+            "source": "web-server-03",
+            "application": "coupon-service",
+            "message": "Discount coupon applied: 15% off total order",
+            "user_id": "user_99876",
+            "ip_address": "192.168.1.78",
+            "response_time": 245,
+            "status_code": 200,
+            "endpoint": "/api/coupons/apply",
+            "method": "POST",
+            "tags": [
+                "coupon",
+                "discount",
+                "order"
+            ]
+        },
+        {
+            "id": "log_039",
+            "timestamp": "2025-06-05T14:23:38.678Z",
+            "level": "WARN",
+            "source": "firewall",
+            "application": "iptables",
+            "message": "Suspicious traffic pattern detected from subnet 203.0.113.0/24",
+            "user_id": null,
+            "ip_address": "203.0.113.42",
+            "response_time": null,
+            "status_code": null,
+            "endpoint": null,
+            "method": null,
+            "tags": [
+                "security",
+                "firewall",
+                "suspicious"
+            ]
+        },
+        {
+            "id": "log_040",
+            "timestamp": "2025-06-05T14:23:25.901Z",
+            "level": "ERROR",
+            "source": "database-replica",
+            "application": "mysql",
+            "message": "Replication lag detected: 45 seconds behind master",
+            "user_id": null,
+            "ip_address": "172.16.10.110",
+            "response_time": null,
+            "status_code": null,
+            "endpoint": null,
+            "method": null,
+            "tags": [
+                "database",
+                "replication",
+                "lag"
+            ]
+        },
+        {
+            "id": "log_041",
+            "timestamp": "2025-06-05T14:23:12.234Z",
+            "level": "INFO",
+            "source": "web-server-02",
+            "application": "address-service",
+            "message": "Address validation completed successfully",
+            "user_id": "user_11567",
+            "ip_address": "10.0.0.25",
+            "response_time": 678,
+            "status_code": 200,
+            "endpoint": "/api/address/validate",
+            "method": "POST",
+            "tags": [
+                "address",
+                "validation",
+                "geocoding"
+            ]
+        },
+        {
+            "id": "log_042",
+            "timestamp": "2025-06-05T14:22:58.567Z",
+            "level": "DEBUG",
+            "source": "image-processor",
+            "application": "imagemagick",
+            "message": "Image resized: 1920x1080 to 300x200 thumbnail",
+            "user_id": "user_77432",
+            "ip_address": "172.16.11.120",
+            "response_time": 890,
+            "status_code": null,
+            "endpoint": null,
+            "method": null,
+            "tags": [
+                "image",
+                "processing",
+                "thumbnail"
+            ]
+        },
+        {
+            "id": "log_043",
+            "timestamp": "2025-06-05T14:22:45.890Z",
+            "level": "WARN",
+            "source": "web-server-01",
+            "application": "session-store",
+            "message": "Session store memory usage at 78%, cleanup initiated",
+            "user_id": null,
+            "ip_address": "192.168.1.45",
+            "response_time": null,
+            "status_code": null,
+            "endpoint": null,
+            "method": null,
+            "tags": [
+                "session",
+                "memory",
+                "cleanup"
+            ]
+        },
+        {
+            "id": "log_044",
+            "timestamp": "2025-06-05T14:22:32.123Z",
+            "level": "INFO",
+            "source": "mobile-api",
+            "application": "react-native-app",
+            "message": "Push notification delivered successfully",
+            "user_id": "user_55443",
+            "ip_address": "198.51.100.78",
+            "response_time": 234,
+            "status_code": 200,
+            "endpoint": "/api/notifications/push",
+            "method": "POST",
+            "tags": [
+                "mobile",
+                "push",
+                "notification"
+            ]
+        },
+        {
+            "id": "log_045",
+            "timestamp": "2025-06-05T14:22:18.456Z",
+            "level": "ERROR",
+            "source": "logging-agent",
+            "application": "fluentd",
+            "message": "Log buffer overflow: Dropping 127 log entries",
+            "user_id": null,
+            "ip_address": "172.16.12.130",
+            "response_time": null,
+            "status_code": null,
+            "endpoint": null,
+            "method": null,
+            "tags": [
+                "logging",
+                "buffer",
+                "overflow"
+            ]
+        },
+        {
+            "id": "log_046",
+            "timestamp": "2025-06-05T14:22:05.789Z",
+            "level": "INFO",
+            "source": "web-server-03",
+            "application": "currency-service",
+            "message": "Exchange rates updated: USD/EUR = 0.91",
+            "user_id": null,
+            "ip_address": "192.168.1.78",
+            "response_time": 456,
+            "status_code": 200,
+            "endpoint": "/api/currency/rates",
+            "method": "GET",
+            "tags": [
+                "currency",
+                "exchange",
+                "rates"
+            ]
+        },
+        {
+            "id": "log_047",
+            "timestamp": "2025-06-05T14:21:52.012Z",
+            "level": "DEBUG",
+            "source": "webhook-processor",
+            "application": "node-webhook",
+            "message": "Webhook payload processed: Stripe payment confirmation",
+            "user_id": null,
+            "ip_address": "203.0.113.89",
+            "response_time": 89,
+            "status_code": 200,
+            "endpoint": "/webhooks/stripe",
+            "method": "POST",
+            "tags": [
+                "webhook",
+                "stripe",
+                "payment"
+            ]
+        },
+        {
+            "id": "log_048",
+            "timestamp": "2025-06-05T14:21:38.345Z",
+            "level": "WARN",
+            "source": "storage-service",
+            "application": "aws-s3",
+            "message": "Storage bucket approaching quota: 87% full",
+            "user_id": null,
+            "ip_address": "52.219.45.123",
+            "response_time": null,
+            "status_code": null,
+            "endpoint": null,
+            "method": null,
+            "tags": [
+                "storage",
+                "quota",
+                "s3"
+            ]
+        },
+        {
+            "id": "log_049",
+            "timestamp": "2025-06-05T14:21:25.678Z",
+            "level": "INFO",
+            "source": "web-server-02",
+            "application": "loyalty-service",
+            "message": "Loyalty points awarded: 250 points for order completion",
+            "user_id": "user_66789",
+            "ip_address": "10.0.0.25",
+            "response_time": 167,
+            "status_code": 200,
+            "endpoint": "/api/loyalty/award",
+            "method": "POST",
+            "tags": [
+                "loyalty",
+                "points",
+                "reward"
+            ]
+        },
+        {
+            "id": "log_050",
+            "timestamp": "2025-06-05T14:21:12.901Z",
+            "level": "ERROR",
+            "source": "external-integration",
+            "application": "salesforce-api",
+            "message": "CRM sync failed: Rate limit exceeded (1000/hour)",
+            "user_id": null,
+            "ip_address": "13.110.52.74",
+            "response_time": 5678,
+            "status_code": 429,
+            "endpoint": "/api/crm/sync",
+            "method": "POST",
+            "tags": [
+                "crm",
+                "salesforce",
+                "rate-limit"
+            ]
         }
     ],
     "metadata": {

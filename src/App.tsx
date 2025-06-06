@@ -2,7 +2,9 @@ import { useState } from "react";
 import log_data from "./data/log_data.json";
 import "./index.css";
 import LogsContainer, { LogsContainerProps } from "./components/LogsContainer";
-import { FaTerminal } from "react-icons/fa6";
+import { BsFillTerminalFill } from "react-icons/bs";
+
+
 
 
 export function App() {
@@ -23,7 +25,7 @@ export function App() {
       <div className="main-container">
         <div className="sub-container">
           <div className="title-container">
-            <span><FaTerminal size={25} /></span>
+            <span><BsFillTerminalFill size={25} /></span>
             <h3>Logs</h3>
           </div>
           <LogsContainer
