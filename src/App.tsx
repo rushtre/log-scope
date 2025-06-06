@@ -8,6 +8,14 @@ import { FaTerminal } from "react-icons/fa6";
 export function App() {
 
   const [logs, setLogs] = useState(log_data.logs)
+  const [currentPage, setCurrentPage] = useState(1);
+  const logsPerPage = 10;
+
+  // Calculate pagination
+  const indexOfLastLog = currentPage * logsPerPage;
+  const indexOfFirstLog = indexOfLastLog - logsPerPage;
+  const currentLogs = logs.slice(indexOfFirstLog, indexOfLastLog);
+  const totalPages = Math.ceil(logs.length / logsPerPage);
 
   return (
     <div className="app">
@@ -17,7 +25,7 @@ export function App() {
             <span><FaTerminal size={25} /></span>
             <h3>Logs</h3>
           </div>
-          <LogsContainer logs={logs} />
+          <LogsContainer logs={currentLogs} currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
         </div>
       </div>
     </div>
