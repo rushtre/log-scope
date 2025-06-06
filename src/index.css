@@ -145,10 +145,16 @@
   margin: 0rem .25rem;
 }
 
-.logs-count>text {
+.logs-count>text,
+.logs-total {
   color: #282a367b;
 }
 
+.logs-total {
+  display: flex;
+  justify-content: flex-end;
+
+}
 
 
 .log-item-container {

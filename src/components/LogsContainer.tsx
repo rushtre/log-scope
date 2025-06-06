@@ -37,6 +37,9 @@ export default function LogsContainer(
 
         // List of log items
         <div className="logs-container">
+            <div className="logs-total">
+                <text>Total : {logs.length * totalPages}</text>
+            </div>
             <div className="logs-title-container">
                 <span className="logs-title">Level</span>
                 <span className="logs-title">Source</span>
