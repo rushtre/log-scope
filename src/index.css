@@ -34,20 +34,21 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #282A36;
+  padding-top: 10rem;
+  margin: 2rem 1rem .5rem 2rem;
+  /* border-bottom: 1px solid #282A36; */
 }
 
 .title-container>h3 {
   padding-left: .5em;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 500;
   margin: 0;
-  margin-bottom: .5em;
+  padding-bottom: .25rem;
 }
 
 .logs-container {
-  padding: 1rem 2rem;
+  padding: 2rem 3rem 4rem 3rem;
   background-color: white;
   border-radius: 1rem;
   width: 100%;
@@ -55,13 +56,64 @@
 }
 
 .logs-title-container {
+  display: flex;
   padding-bottom: .75rem;
-  margin-bottom: .5rem;
+  margin-bottom: .75rem;
   border-bottom: 1px solid #282a367e;
 }
 
 .logs-title {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 500;
-  padding-right: 10rem;
 }
+
+.logs-title:nth-child(1) {
+  flex: 0 0 120px;
+}
+
+.logs-title:nth-child(2) {
+  flex: 0 0 200px;
+}
+
+.logs-title:nth-child(3) {
+  flex: 0 0 220px;
+}
+
+.logs-title:nth-child(4) {
+  flex: 1;
+}
+
+
+
+.log-item-container {
+  display: flex;
+  padding-bottom: 1rem;
+}
+
+.log-item-attribute {
+  display: flex;
+  align-items: center;
+}
+
+
+.log-item-icon {
+  padding-right: .25rem;
+}
+
+.log-item-attribute:nth-child(1) {
+  flex: 0 0 120px;
+}
+
+.log-item-attribute:nth-child(2) {
+  flex: 0 0 200px;
+}
+
+.log-item-attribute:nth-child(3) {
+  flex: 0 0 220px;
+}
+
+.log-item-attribute:nth-child(4) {
+  flex: 1;
+}
+
+/* Message */
