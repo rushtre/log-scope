@@ -51,16 +51,16 @@
   position: relative;
   padding: 2rem 3rem;
   background-color: white;
-  border-radius: 1rem;
-  width: 70rem;
-  height: 42rem;
+  border-radius: .5rem;
+  /* width: 70rem;
+  height: 48rem; */
   display: flex;
   flex-direction: column;
 }
 
 .logs-title-container {
   display: flex;
-  padding-bottom: .75rem;
+  padding: .75rem 0rem;
   margin-bottom: 1.45rem;
   border-bottom: 1px solid #282a367e;
 }
@@ -72,6 +72,7 @@
 
 .logs-title:nth-child(1) {
   flex: 0 0 120px;
+  padding-left: .65rem;
 }
 
 .logs-title:nth-child(2) {
@@ -90,9 +91,9 @@
   opacity: 1;
   transform: translateY(0);
   transition: all 0.4s ease-in-out;
-  flex: 1;
+  /* flex: 1;
   overflow-y: auto;
-  min-height: 0
+  min-height: 0 */
 }
 
 .logs-list.transitioning {
@@ -101,10 +102,7 @@
 }
 
 .logs-pagination {
-  position: absolute;
   display: flex;
-  bottom: 20;
-  right: 40;
 }
 
 .logs-pagination>button {
@@ -114,25 +112,52 @@
   font-size: 1rem;
   border: none;
   background-color: transparent;
+  height: 2.15rem;
+  width: 2.15rem;
+  margin: 0rem .25rem;
+  border-radius: 50%;
   color: #282A36;
 }
 
 .logs-pagination>button:hover {
   cursor: pointer;
+  background-color: #282a360d;
 }
 
-.logs-container-footer {
+.logs-pagination>button.active {
+  background-color: #282a360d;
+}
+
+.logs-footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-top: 1px solid #282a367e;
-  height: 2rem;
+  height: 3rem;
+  padding-top: .25rem;
+  margin-top: 1.35rem;
 }
 
-.active {
-  font-weight: 700;
+.logs-count {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0rem .25rem;
 }
+
+.logs-count>text {
+  color: #282a367b;
+}
+
+
 
 .log-item-container {
   display: flex;
-  padding-bottom: 1rem;
+  align-items: center;
+  padding: .65rem 0rem;
+  margin-bottom: .5rem;
+  /* background-color: #282a360a; */
+  border-radius: .25rem;
 }
 
 .log-item-attribute {
@@ -143,10 +168,20 @@
 
 .log-item-icon {
   padding-right: .25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.log-item-level {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .log-item-attribute:nth-child(1) {
   flex: 0 0 120px;
+  padding-left: .65rem;
 }
 
 .log-item-attribute:nth-child(2) {

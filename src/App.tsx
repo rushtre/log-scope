@@ -14,6 +14,7 @@ export function App() {
   // Calculate pagination
   const indexOfLastLog = currentPage * logsPerPage;
   const indexOfFirstLog = indexOfLastLog - logsPerPage;
+
   const currentLogs = logs.slice(indexOfFirstLog, indexOfLastLog);
   const totalPages = Math.ceil(logs.length / logsPerPage);
 
@@ -25,7 +26,13 @@ export function App() {
             <span><FaTerminal size={25} /></span>
             <h3>Logs</h3>
           </div>
-          <LogsContainer logs={currentLogs} currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
+          <LogsContainer
+            logs={currentLogs}
+            logFirstIndex={indexOfFirstLog}
+            logLastIndex={indexOfLastLog}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage} />
         </div>
       </div>
     </div>

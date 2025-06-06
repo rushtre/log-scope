@@ -1,4 +1,3 @@
-import { color } from "bun";
 import { IoWarning } from "react-icons/io5";
 import { IoInformationCircle } from "react-icons/io5";
 import { IoMdBug } from "react-icons/io";
@@ -18,7 +17,13 @@ export interface logProps {
     message: string,
 }
 
-export default function LogItem({ level, source, timestamp, message }: logProps) {
+export default function LogItem(
+    {
+        level,
+        source,
+        timestamp,
+        message
+    }: logProps) {
 
     // Format timestamp - M/D/Y, 0:00:00 PM
     function formatTimestamp(timestamp: string): string {
@@ -46,15 +51,15 @@ export default function LogItem({ level, source, timestamp, message }: logProps)
     function getLevelIcon(level: string) {
         switch (level) {
             case 'ERROR':
-                return <IoWarning size={21} />;
+                return <IoWarning size={16} />;
             case 'WARN':
-                return <PiWarningOctagonFill size={21} />;
+                return <PiWarningOctagonFill size={16} />;
             case 'INFO':
-                return <IoInformationCircle size={21} />;
+                return <IoInformationCircle size={16} />;
             case 'DEBUG':
                 return <IoMdBug />;
             default:
-                return <BsFillQuestionSquareFill size={21} />;
+                return <BsFillQuestionSquareFill size={16} />;
         }
     }
 
@@ -62,9 +67,8 @@ export default function LogItem({ level, source, timestamp, message }: logProps)
         // A single log row
         <div className="log-item-container">
             <div className="log-item-attribute">
-                {/* <img src="" /> */}
                 <span style={{ color: getLevelColor(level) }} className="log-item-icon">{getLevelIcon(level)}</span>
-                <span style={{ color: getLevelColor(level) }}>{level}</span>
+                <span style={{ color: getLevelColor(level) }} className="log-item-level">{level}</span>
             </div>
             <div className="log-item-attribute">
                 <span style={{ color: "green" }}>{source}</span>

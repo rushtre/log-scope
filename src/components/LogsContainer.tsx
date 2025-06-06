@@ -6,13 +6,22 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 export interface LogsContainerProps {
     // Array of log item objects
     logs: logProps[],
+    logFirstIndex: number,
+    logLastIndex: number,
     currentPage: number,
     totalPages: number,
     onPageChange: (page: number) => void
 }
 
-export default function LogsContainer({ logs, currentPage, totalPages, onPageChange }: LogsContainerProps) {
-
+export default function LogsContainer(
+    {
+        logs,
+        logFirstIndex,
+        logLastIndex,
+        currentPage,
+        totalPages,
+        onPageChange
+    }: LogsContainerProps) {
 
     const [isTransitioning, setIsTransitioning] = useState(false);
     const handlePageChange = (page: number) => {
@@ -21,7 +30,7 @@ export default function LogsContainer({ logs, currentPage, totalPages, onPageCha
         setTimeout(() => {
             onPageChange(page);
             setIsTransitioning(false);
-        }, 500); // Half of transition duration
+        }, 500);
     };
 
     return (
@@ -39,14 +48,18 @@ export default function LogsContainer({ logs, currentPage, totalPages, onPageCha
                     <LogItem key={log.id} {...log} />
                 ))}
             </div>
-            <div className="logs-container-footer">
+            <div className="logs-footer-container">
+                <div className="logs-count">
+                    <text>{logFirstIndex + 1} - {logLastIndex}</text>
+                </div>
+
                 {/* Page navigation */}
                 <div className="logs-pagination">
                     <button
                         onClick={() => handlePageChange(currentPage - 1)}
                         disabled={currentPage === 1}
                     >
-                        <IoIosArrowBack size={20} />
+                        <IoIosArrowBack size={15} />
                     </button>
 
                     {Array.from({ length: totalPages }, (_, i) => (
@@ -63,7 +76,7 @@ export default function LogsContainer({ logs, currentPage, totalPages, onPageCha
                         onClick={() => handlePageChange(currentPage + 1)}
                         disabled={currentPage === totalPages}
                     >
-                        <IoIosArrowForward size={20} />
+                        <IoIosArrowForward size={15} />
                     </button>
                 </div>
             </div>
