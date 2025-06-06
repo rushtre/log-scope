@@ -39,32 +39,33 @@ export default function LogsContainer({ logs, currentPage, totalPages, onPageCha
                     <LogItem key={log.id} {...log} />
                 ))}
             </div>
-
-            {/* Page navigation */}
-            <div className="logs-pagination">
-                <button
-                    onClick={() => handlePageChange(currentPage - 1)}
-                    disabled={currentPage === 1}
-                >
-                    <IoIosArrowBack size={20} />
-                </button>
-
-                {Array.from({ length: totalPages }, (_, i) => (
+            <div className="logs-container-footer">
+                {/* Page navigation */}
+                <div className="logs-pagination">
                     <button
-                        key={i + 1}
-                        onClick={() => handlePageChange(i + 1)}
-                        className={currentPage === i + 1 ? 'active' : ''}
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
                     >
-                        {i + 1}
+                        <IoIosArrowBack size={20} />
                     </button>
-                ))}
 
-                <button
-                    onClick={() => handlePageChange(currentPage + 1)}
-                    disabled={currentPage === totalPages}
-                >
-                    <IoIosArrowForward size={20} />
-                </button>
+                    {Array.from({ length: totalPages }, (_, i) => (
+                        <button
+                            key={i + 1}
+                            onClick={() => handlePageChange(i + 1)}
+                            className={currentPage === i + 1 ? 'active' : ''}
+                        >
+                            {i + 1}
+                        </button>
+                    ))}
+
+                    <button
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                    >
+                        <IoIosArrowForward size={20} />
+                    </button>
+                </div>
             </div>
         </div>
     )
