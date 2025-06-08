@@ -1,8 +1,8 @@
 import { useState } from "react";
 import log_data from "./data/log_data.json";
 import "./index.css";
-import LogsContainer, { LogsContainerProps } from "./components/LogsContainer";
-import { BsFillTerminalFill } from "react-icons/bs";
+import LogsContainer from "./components/LogsContainer";
+import { BsTerminal } from "react-icons/bs";
 
 
 
@@ -25,7 +25,7 @@ export function App() {
       <div className="main-container">
         <div className="sub-container">
           <div className="title-container">
-            <span><BsFillTerminalFill size={25} /></span>
+            <span><BsTerminal size={25} /></span>
             <h3>Logs</h3>
           </div>
           <LogsContainer
@@ -41,4 +41,3 @@ export function App() {
   );
 }
 
-export default App;

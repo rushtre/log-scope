@@ -1,17 +1,7 @@
 import { useState } from "react";
-import LogItem, { logProps } from "./LogItem";
+import LogEntry from "@/components/LogEntry";
+import {LogsContainer, } from "@/services/types";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-
-
-export interface LogsContainerProps {
-    // Array of log item objects
-    logs: logProps[],
-    logFirstIndex: number,
-    logLastIndex: number,
-    currentPage: number,
-    totalPages: number,
-    onPageChange: (page: number) => void
-}
 
 export default function LogsContainer(
     {
@@ -21,7 +11,7 @@ export default function LogsContainer(
         currentPage,
         totalPages,
         onPageChange
-    }: LogsContainerProps) {
+    }: LogsContainer) {
 
     const [isTransitioning, setIsTransitioning] = useState(false);
     const handlePageChange = (page: number) => {
@@ -48,7 +38,7 @@ export default function LogsContainer(
             </div>
             <div className={`logs-list ${isTransitioning ? 'transitioning' : ''}`}>
                 {logs.map(log => (
-                    <LogItem key={log.id} {...log} />
+                    <LogEntry key={log.id} {...log} />
                 ))}
             </div>
             <div className="logs-footer-container">

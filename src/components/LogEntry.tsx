@@ -1,29 +1,18 @@
+import {logEntry} from "@/services/types";
 import { IoWarning } from "react-icons/io5";
 import { IoInformationCircle } from "react-icons/io5";
 import { IoMdBug } from "react-icons/io";
 import { PiWarningOctagonFill } from "react-icons/pi";
 import { BsFillQuestionSquareFill } from "react-icons/bs";
 
-
-
-
-
-
-export interface logProps {
-    id: string,
-    level: string,
-    source: string,
-    timestamp: string,
-    message: string,
-}
-
-export default function LogItem(
+export default function LogEntry(
     {
         level,
         source,
+        method,
         timestamp,
         message
-    }: logProps) {
+    }: logEntry) {
 
     // Format timestamp - M/D/Y, 0:00:00 PM
     function formatTimestamp(timestamp: string): string {
