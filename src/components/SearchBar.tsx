@@ -25,6 +25,11 @@ const SearchBar: React.FC<SearchBar> = (
     const onInputText = (e: React.ChangeEvent<HTMLInputElement>) => { }
     const onSearchButton = () => {}
 
+    function capitalize(word: string): string{
+        if (!word) return '';
+        return word[0] + word.slice(1).toLowerCase();
+    }
+
     return (
         <div className="search-bar-container">
             <div className="search-bar-input-container">
@@ -34,9 +39,9 @@ const SearchBar: React.FC<SearchBar> = (
                 </div>
                 {/*<input id={"input"} type={"text"} value={searchText || ''} onChange={onInputText}  placeholder={<FaMagnifyingGlass/>}/>*/}
                 {/*<div className="search-bar-date-time-container">*/}
-                    <DateTimePicker className="search-bar-date-button" value={startDate} label={"Start"}/>
+                    <DateTimePicker className="search-bar-date-button" value={startDate}/>
                     <span>to</span>
-                    <DateTimePicker className="search-bar-date-button" value={endDate} label={"End"}/>
+                    <DateTimePicker className="search-bar-date-button" value={endDate}/>
                 {/*</div>*/}
             </div>
             <div className="search-bar-filter-container">
@@ -53,7 +58,7 @@ const SearchBar: React.FC<SearchBar> = (
                                         className="filter-button"
                                         // onChange handler here
                                     />
-                                    <label htmlFor={`level-${levelOption}`}>{levelOption}</label>
+                                    <label htmlFor={`level-${levelOption}`}>{capitalize(levelOption)}</label>
                                 </div>
                             ))}
                         </div>
@@ -70,7 +75,7 @@ const SearchBar: React.FC<SearchBar> = (
                                         className="filter-button"
                                         // onChange handler here
                                     />
-                                    <label htmlFor={`method-${methodOption}`}>{methodOption}</label>
+                                    <label htmlFor={`method-${methodOption}`}>{capitalize(methodOption)}</label>
                                 </div>
                             ))}
                         </div>

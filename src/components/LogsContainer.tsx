@@ -40,7 +40,7 @@ export default function LogsContainer(
             </div>
             <div className={`logs-list ${isTransitioning ? 'transitioning' : ''}}`}>
                 {logs.map((log, index) => (
-                    <LogEntry key={log.id} {...log} index={index}/>
+                    <LogEntry key={log.id} {...log}/>
                 ))}
             </div>
             <div className="logs-footer-container">

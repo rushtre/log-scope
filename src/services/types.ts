@@ -3,7 +3,7 @@ export interface LogEntry {
     level: string,
     source: string,
     timestamp: string,
-    method: string,
+    method: string | null,
     message: string,
     user_id: string | null,
     ip_address: string | null,
@@ -12,7 +12,6 @@ export interface LogEntry {
     endpoint: string | null,
     application: string | null,
     tags?: string[],
-    index: number,
 }
 
 export interface LogsContainer {

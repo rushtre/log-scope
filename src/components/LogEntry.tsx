@@ -18,8 +18,7 @@ export default function LogEntry(
         status_code,
         endpoint,
         application,
-        tags,
-        index
+        tags
     }: LogEntry) {
 
     // Format timestamp - M/D/Y, 0:00:00 PM
@@ -62,7 +61,7 @@ export default function LogEntry(
 
     return (
         // A single log row
-        <div className={`log-item-container ${index % 2 === 0 ? 'even' : 'odd'}` }>
+        <div className={`log-item-container ` }>
             <div className="log-item-attribute">
                 <span style={{ color: getLevelColor(level) }} className="log-item-icon">{getLevelIcon(level)}</span>
                 <span style={{ color: getLevelColor(level) }} className="log-item-level">{level}</span>
