@@ -1,20 +1,20 @@
 
-import {logEntry} from "@/components/LogEntry";
+import {LogEntry} from "@/services/types";
 
 
 class LogSearchEngine {
 
-    private byLevel = new Map <string, logEntry[]>();
-    private bySource = new Map <string, logEntry[]>();
-    private byTimestamp = new Map <string, logEntry[]>();
-    private byMessage = new Map <string, logEntry[]>();
+    private byLevel = new Map <string, LogEntry[]>();
+    private bySource = new Map <string, LogEntry[]>();
+    private byTimestamp = new Map <string, LogEntry[]>();
+    private byMessage = new Map <string, LogEntry[]>();
 
-    constructor(logs: logEntry[]) {
+    constructor(logs: LogEntry[]) {
         this.buildIndexes(logs)
     }
 
     // Index data by their attributes
-    private buildIndexes(logs: logEntry[]) {
+    private buildIndexes(logs: LogEntry[]) {
             for (const log of logs) {
                 this.addToIndex(this.byLevel, log.level, log);
                 this.addToIndex(this.bySource, log.source, log);
@@ -24,7 +24,7 @@ class LogSearchEngine {
     }
 
     // Function to help insert a log to its respective group
-    private addToIndex<K>(map: Map<K, logEntry[]>, key: K, log: logEntry) {
+    private addToIndex<K>(map: Map<K, LogEntry[]>, key: K, log: LogEntry) {
         if (!map.has(key)) {
             map.set(key, []);
         }

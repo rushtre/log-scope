@@ -1,4 +1,4 @@
-import {logEntry} from "@/services/types";
+import {LogEntry} from "@/services/types";
 import { IoWarning } from "react-icons/io5";
 import { IoInformationCircle } from "react-icons/io5";
 import { IoMdBug } from "react-icons/io";
@@ -11,8 +11,16 @@ export default function LogEntry(
         source,
         method,
         timestamp,
-        message
-    }: logEntry) {
+        message,
+        user_id,
+        ip_address,
+        response_time,
+        status_code,
+        endpoint,
+        application,
+        tags,
+        index
+    }: LogEntry) {
 
     // Format timestamp - M/D/Y, 0:00:00 PM
     function formatTimestamp(timestamp: string): string {
@@ -54,7 +62,7 @@ export default function LogEntry(
 
     return (
         // A single log row
-        <div className="log-item-container">
+        <div className={`log-item-container ${index % 2 === 0 ? 'even' : 'odd'}` }>
             <div className="log-item-attribute">
                 <span style={{ color: getLevelColor(level) }} className="log-item-icon">{getLevelIcon(level)}</span>
                 <span style={{ color: getLevelColor(level) }} className="log-item-level">{level}</span>

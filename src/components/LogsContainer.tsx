@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LogEntry from "@/components/LogEntry";
+import SearchBar from "@/components/SearchBar";
 import {LogsContainer, } from "@/services/types";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
@@ -27,8 +28,9 @@ export default function LogsContainer(
 
         // List of log items
         <div className="logs-container">
-            <div className="logs-total">
+            <div className="logs-hero">
                 <text>Total : {logs.length * totalPages}</text>
+                <SearchBar/>
             </div>
             <div className="logs-title-container">
                 <span className="logs-title">Level</span>
@@ -36,9 +38,9 @@ export default function LogsContainer(
                 <span className="logs-title">Timestamp</span>
                 <span className="logs-title">Message</span>
             </div>
-            <div className={`logs-list ${isTransitioning ? 'transitioning' : ''}`}>
-                {logs.map(log => (
-                    <LogEntry key={log.id} {...log} />
+            <div className={`logs-list ${isTransitioning ? 'transitioning' : ''}}`}>
+                {logs.map((log, index) => (
+                    <LogEntry key={log.id} {...log} index={index}/>
                 ))}
             </div>
             <div className="logs-footer-container">

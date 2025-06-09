@@ -15,6 +15,7 @@
 }
 
 
+/*---------------------------- APP STYLING ----------------------------*/
 
 .main-container {
   width: 100%;
@@ -26,7 +27,7 @@
 }
 
 .sub-container {
-  width: 75rem;
+  width: 95rem;
 }
 
 .title-container {
@@ -34,7 +35,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  padding-top: 10rem;
+  padding-top: 5rem;
   margin: 2rem 1rem .5rem 2rem;
   /* border-bottom: 1px solid #282A36; */
 }
@@ -47,11 +48,16 @@
   padding-bottom: .25rem;
 }
 
+
+/*---------------------------- LOGS CONTAINER STYLING ----------------------------*/
+
 .logs-container {
   position: relative;
-  padding: 2rem 3rem;
+  padding: 2.25rem 3rem 2rem 3rem ;
+
   background-color: white;
   border-radius: .5rem;
+  width: 95rem;
   /* width: 70rem;
   height: 48rem; */
   display: flex;
@@ -60,7 +66,7 @@
 
 .logs-title-container {
   display: flex;
-  padding: .75rem 0rem;
+  padding: .75rem 0;
   margin-bottom: 1.45rem;
   border-bottom: 1px solid #282a367e;
 }
@@ -145,25 +151,32 @@
   margin: 0rem .25rem;
 }
 
+.logs-hero>text,
 .logs-count>text,
+.filter-label,
 .logs-total {
   color: #282a367b;
 }
 
-.logs-total {
+.logs-hero {
   display: flex;
-  justify-content: flex-end;
-
+  justify-content: space-between;
+  padding-bottom: 5rem;
 }
 
+/*---------------------------- LOG ENTRY STYLING ---------------------------- */
 
 .log-item-container {
   display: flex;
   align-items: center;
-  padding: .65rem 0rem;
+  padding: .65rem 0;
   margin-bottom: .5rem;
   /* background-color: #282a360a; */
   border-radius: .25rem;
+}
+
+.odd{
+  background-color: #282a360a;
 }
 
 .log-item-attribute {
@@ -202,4 +215,110 @@
   flex: 1;
 }
 
-/* Message */
+
+/*---------------------------- SEARCH BAR STYLING ----------------------------*/
+
+.search-bar-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-bar-date-time-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar-input-container {
+  display: flex;
+  align-items: center;
+margin-bottom: .75rem;
+  gap: .85rem;
+}
+
+.search-bar-input-container>input {
+  height: 100%;
+  width: 20rem;
+  text-decoration: none;
+  background-color: white;
+  border-radius: .25rem;
+  border: 1px solid #282a367e;
+  padding: 0 .5rem;
+  font-family: "Poppins", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.search-bar-filter-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-bar-filter-options-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-bar-filter-level-container,
+.search-bar-filter-method-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-label {
+  padding-left: .25rem;
+padding-bottom: .25rem;
+}
+
+.search-bar-filter-level-options,
+.search-bar-filter-method-options {
+  display: flex;
+  gap: .75rem;
+}
+
+.filter-button-container {
+  display: flex;
+}
+.filter-button{
+  background-color: white;
+  border: 1px solid #282a367e;
+  padding: 1rem;
+}
+
+.search-bar-search-button {
+  border-radius: .35rem;
+  padding: .25rem 2rem;
+  box-shadow: none;
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-family: "Poppins", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.search-bar-search-button:hover {
+cursor: pointer;
+  text-decoration: none;
+}
+
+.search-bar-custom-input {
+  padding-left: 2rem;
+  height: 100%;
+  font-size: 1.05rem;
+  background-color: white;
+  color: #282a367b;
+  border: 1px solid #282a367e;
+  border-radius: .25rem;
+  width: 20rem;
+}
+
+.search-bar-custom-input-container {
+  position: relative;
+  width: fit-content;
+  height: 100%;
+}
+
+.magnifying-glass {
+  position: absolute;
+  left:8px;
+  top:50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+

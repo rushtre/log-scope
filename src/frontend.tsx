@@ -8,11 +8,15 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./App";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
 const elem = document.getElementById("root")!;
 const app = (
   <StrictMode>
-    <App />
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <App />
+      </LocalizationProvider>
   </StrictMode>
 );
 
