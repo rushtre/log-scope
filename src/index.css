@@ -330,3 +330,66 @@ padding-bottom: .25rem;
   pointer-events: none;
 }
 
+
+.custom-date-time-picker-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.custom-date-time-picker {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  color: rgba(40, 42, 54, 0.6);
+}
+
+.custom-date-time-picker>span {
+  display: flex;
+align-items: center;
+}
+
+.custom-date-time-pick{
+  background-color: white;
+  border: 1px solid #282a367e;
+  padding: .85rem .95rem;
+  cursor: pointer;
+  min-width: 12rem;
+  max-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  border-radius: .5rem;
+}
+.custom-time-input-container {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.custom-time-input-container>span {
+  display: flex;
+  align-items: center;
+}
+.custom-time-input {
+  background-color: transparent;
+  border: none;
+  color: #282a367b;
+  cursor: pointer;
+  font-family: "Poppins", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  text-decoration: none;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(17%) sepia(8%) saturate(1034%) hue-rotate(186deg) brightness(94%) contrast(88%);
+}
+
+
+
+
+
+
+
+

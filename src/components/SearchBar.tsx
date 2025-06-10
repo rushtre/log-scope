@@ -1,20 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 import {SearchBar} from "@/services/types";
-import {DateTimePicker} from "@mui/x-date-pickers";
+import CustomDateInput from "@/components/CustomDateInput";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import {FaUser} from "react-icons/fa";
+
 
 const SearchBar: React.FC<SearchBar> = (
     {
         level,
         method,
         searchText,
-        startDate,
-        endDate,
-        // onFiltersChange
+        onSearchTextChange,
+        onLevelChange,
+        onMethodChange
     }: SearchBar)=> {
+
+    const [startingDate, setStartingDate] = useState<Date | null>(null);
+    const [endingDate, setEndingDate] = useState<Date | null>(null);
+    const [startingTime, setStartingTime] = useState<Date | null>(null);
+    const [endingTime, setEndingTime] = useState<Date | null>(null);
 
     const levelFilter = level ?? [];
     const methodFilter = method ?? [];
@@ -22,7 +26,6 @@ const SearchBar: React.FC<SearchBar> = (
     const levelOptions = ['DEBUG', 'ERROR', 'INFO', 'WARN'] as const;
     const methodOptions = ['DELETE', 'GET', 'PATCH', 'POST', 'PUT'] as const;
 
-    const onInputText = (e: React.ChangeEvent<HTMLInputElement>) => { }
     const onSearchButton = () => {}
 
     function capitalize(word: string): string{
@@ -37,12 +40,16 @@ const SearchBar: React.FC<SearchBar> = (
                     <input type="text" className={"search-bar-custom-input"}/>
                     <FaMagnifyingGlass className={"magnifying-glass"} style={{color: "grey"}}/>
                 </div>
-                {/*<input id={"input"} type={"text"} value={searchText || ''} onChange={onInputText}  placeholder={<FaMagnifyingGlass/>}/>*/}
-                {/*<div className="search-bar-date-time-container">*/}
-                    <DateTimePicker className="search-bar-date-button" value={startDate}/>
-                    <span>to</span>
-                    <DateTimePicker className="search-bar-date-button" value={endDate}/>
-                {/*</div>*/}
+                <CustomDateInput
+                    startDate={startingDate}
+                    endDate={endingDate}
+                    startTime={startingTime}
+                    endTime={endingTime}
+                    onStartDateChange={setStartingDate}
+                    onEndDateChange={setEndingDate}
+                    onStartTimeChange={setStartingTime}
+                    onEndTimeChange={setEndingTime}
+                />
             </div>
             <div className="search-bar-filter-container">
                 <div className="search-bar-filter-options-container">

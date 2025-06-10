@@ -27,7 +27,18 @@ export interface SearchBar{
     level?: ("ERROR" | "WARN" | "INFO" | "DEBUG")[];
     method?: ("POST" | "GET" | "PUT" | "PATCH" | "DELETE")[];
     searchText?: string,
-    startDate?: Date,
-    endDate?: Date,
+    onSearchTextChange?: (text: string) => void,
+    onLevelChange?: (levels: ("ERROR" | "WARN" | "INFO" | "DEBUG")[]) => void,
+    onMethodChange?: (methods: ("POST" | "GET" | "PUT" | "PATCH" | "DELETE")[]) => void
+}
 
+export interface CustomDateInput {
+    startDate: Date | null,
+    endDate: Date | null,
+    startTime: Date | null,
+    endTime: Date | null,
+    onStartDateChange : (date: Date | null ) => void,
+    onEndDateChange : (date: Date | null) => void,
+    onStartTimeChange : (date: Date | null) => void,
+    onEndTimeChange : (date: Date | null) => void
 }
