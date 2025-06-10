@@ -29,8 +29,8 @@ export default function CustomDateInput(
             ref={ref }
             className="custom-date-time-picker"
         >
-            <span>{icon}</span>
-            <span>{value || text}</span>
+            <span className={"custom-date-time-picker-icon"}>{icon}</span>
+            <span className={"custom-date-time-picker-value"}>{value || text}</span>
         </div>
     ));
 
@@ -42,33 +42,59 @@ export default function CustomDateInput(
                 <DatePicker
                     selected={startDate}
                     dateFormat="MM/dd/yyyy"
-                    customInput={<CustomInput icon={<CiCalendar size={20}/>} text={"Start Date"}/>}
+                    customInput={<CustomInput icon={<CiCalendar size={20}/>} placeholder={"Start Date"} text={"Start Date"}/>}
                     locale={enUS}
                     onChange={onStartDateChange}
-
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    yearDropdownItemNumber={10}
                 />
-                <div className={"custom-time-input-container"}>
-                    <span>{<CiClock2 size={20}/>}</span>
-                    <input className={"custom-time-input"}
-                           type={"time"}
+                {/*<div className={"custom-time-input-container"}>*/}
+                {/*    <span>{<CiClock2 size={20}/>}</span>*/}
+                {/*    <input className={"custom-time-input"}*/}
+                {/*           type={"time"}*/}
+                {/*    />*/}
+                {/*</div>*/}
+                <span className={"spacer"}></span>
+                <DatePicker
+                    selected={startTime}
+                    showTimeSelect
+                    showTimeSelectOnly
+                    timeIntervals={15}
+                    timeCaption="Time"
+                    dateFormat="h:mm aa"
+                    customInput={<CustomInput icon={<CiClock2 size={20}/>} text={"Time"} />}
+                    locale={enUS}
+                    onChange={onStartTimeChange}
                     />
-                </div>
             </div>
             <span>to</span>
             <div className={"custom-date-time-pick"}>
                 <DatePicker
                     selected={endDate}
                     dateFormat="MM/dd/yyyy"
-                    customInput={<CustomInput icon={<CiCalendar size={20}/>} text={"End Date"} />}
+                    customInput={<CustomInput icon={<CiCalendar size={20}/>} placeholder={"End Date"} text={"End Date"} />}
                     locale={enUS}
                     onChange={onEndDateChange}
+
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    yearDropdownItemNumber={10}
                 />
-                <div className={"custom-time-input-container"}>
-                    <span>{<CiClock2 size={20}/>}</span>
-                    <input className={"custom-time-input"}
-                        type={"time"}
-                    />
-                </div>
+                <span className={"spacer"}></span>
+                <DatePicker
+                    selected={endTime}
+                    showTimeSelect
+                    showTimeSelectOnly
+                    timeIntervals={15}
+                    timeCaption="Time"
+                    dateFormat="h:mm aa"
+                    customInput={<CustomInput icon={<CiClock2 size={20}/>} text={"Time"} />}
+                    locale={enUS}
+                    onChange={onEndTimeChange}
+                />
             </div>
         </div>
     )

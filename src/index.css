@@ -12,7 +12,37 @@
   color-scheme: light dark;
   color: #282A36;
   background-color: #F3F5F7;
+
+
+  --primary-color: #282A36;
+  --primary-light: #44475a;
+  --primary-dark:  #141e2a;
+
+
+  --bg-primary: #fff;
+  --bg-seconday: #282a360a;
+  --bg-transparent: transparent;
+
+
+  --font-primary: #141e2a ;
+  --font-secondary: #6e7f80;
+  --font-tertiary: #fff;
+
+  --border-primary:#6e7f80 ;
+  --border-secondary: #fff;
+
+
+  --btn-primary: #36454f
+
+
 }
+
+.spacer {
+  width: 1rem;
+}
+
+
+
 
 
 /*---------------------------- APP STYLING ----------------------------*/
@@ -54,26 +84,25 @@
 .logs-container {
   position: relative;
   padding: 2.25rem 3rem 2rem 3rem ;
-
-  background-color: white;
+  background-color: var(--bg-primary);
   border-radius: .5rem;
   width: 95rem;
-  /* width: 70rem;
-  height: 48rem; */
   display: flex;
   flex-direction: column;
+  z-index: auto;
 }
 
 .logs-title-container {
   display: flex;
   padding: .75rem 0;
   margin-bottom: 1.45rem;
-  border-bottom: 1px solid #282a367e;
+  border-bottom: 1px solid var(--border-primary);
 }
 
 .logs-title {
   font-size: 1.15rem;
   font-weight: 500;
+  color: var(--font-secondary);
 }
 
 .logs-title:nth-child(1) {
@@ -97,13 +126,10 @@
   opacity: 1;
   transform: translateY(0);
   transition: all 0.4s ease-in-out;
-  /* flex: 1;
-  overflow-y: auto;
-  min-height: 0 */
 }
 
 .logs-list > *:nth-child(odd) {
-  background-color: #282a360a;
+  background-color: var(--bg-seconday);
 }
 
 .logs-list.transitioning {
@@ -121,10 +147,10 @@
   align-items: center;
   font-size: 1rem;
   border: none;
-  background-color: transparent;
+  background-color: var(--bg-transparent);
   height: 2.15rem;
   width: 2.15rem;
-  margin: 0rem .25rem;
+  margin: 0 .25rem;
   border-radius: 50%;
   color: #282A36;
 }
@@ -142,7 +168,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid #282a367e;
+  border-top: 1px solid var(--border-primary);
   height: 3rem;
   padding-top: .45rem;
   margin-top: 1.35rem;
@@ -152,7 +178,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  margin: 0rem .25rem;
+  margin: 0 .25rem;
 }
 
 .logs-hero>text,
@@ -175,12 +201,7 @@
   align-items: center;
   padding: .65rem 0;
   margin-bottom: .5rem;
-  /* background-color: #282a360a; */
   border-radius: .25rem;
-}
-
-.odd{
-  background-color: #282a360a;
 }
 
 .log-item-attribute {
@@ -219,6 +240,10 @@
   flex: 1;
 }
 
+.log-item-attribute>span {
+  color: var(--font-primary);
+}
+
 
 /*---------------------------- SEARCH BAR STYLING ----------------------------*/
 
@@ -235,17 +260,17 @@
 .search-bar-input-container {
   display: flex;
   align-items: center;
-margin-bottom: .75rem;
+  margin-bottom: .75rem;
   gap: .85rem;
+  height: 2.4rem;
 }
 
 .search-bar-input-container>input {
   height: 100%;
   width: 20rem;
   text-decoration: none;
-  background-color: white;
+  background-color: var(--bg-primary);
   border-radius: .25rem;
-  border: 1px solid #282a367e;
   padding: 0 .5rem;
   font-family: "Poppins", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
@@ -270,7 +295,8 @@ margin-bottom: .75rem;
 
 .filter-label {
   padding-left: .25rem;
-padding-bottom: .25rem;
+padding-bottom: .5rem;
+  color: 	var(--font-secondary);
 }
 
 .search-bar-filter-level-options,
@@ -286,19 +312,28 @@ padding-bottom: .25rem;
 
 
 .filter-button{
-  text-decoration: none;
-  background-color: white;
-  border: 1px solid #282a367e;
-  padding: 1rem;
+  background-color: var(--bg-transparent);
+  border: 1px solid var(--border-primary);
+  border-radius: .35rem;
+  color: var(--font-primary);
+  height: 1.75rem;
+  width: 4rem;
+  cursor: pointer;
+  font-family: "Poppins", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.filter-button:hover {
+  border: 2px solid var(--border-primary);
 }
 
 .search-bar-search-button {
-  border-radius: .35rem;
+  border-radius: .5rem;
   padding: .5rem 2rem;
   box-shadow: none;
   border: 1px solid transparent;
   font-size: 1em;
   font-family: "Poppins", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: var(--btn-primary);
 }
 
 .search-bar-search-button:hover {
@@ -309,11 +344,17 @@ padding-bottom: .25rem;
   padding-left: 2rem;
   height: 100%;
   font-size: 1.05rem;
-  background-color: white;
-  color: #282a367b;
-  border: 1px solid #282a367e;
-  border-radius: .25rem;
+  font-family: "Poppins", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--font-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: .5rem;
   width: 20rem;
+}
+
+.search-bar-custom-input:focus {
+  outline: none;
+  border: 3px solid var(--border-primary);
 }
 
 .search-bar-custom-input-container {
@@ -331,42 +372,53 @@ padding-bottom: .25rem;
 }
 
 
+/*---------------------------- CUSTOM DATE/TIME STYLING ----------------------------*/
+
 .custom-date-time-picker-container {
   display: flex;
   align-items: center;
   gap: 1rem;
+  height: 100%
 }
 
 .custom-date-time-picker {
   display: flex;
   align-items: center;
-  gap: .5rem;
-  color: rgba(40, 42, 54, 0.6);
+  gap: .25rem;
+  color: var(--font-primary);
 }
+
+
 
 .custom-date-time-picker>span {
   display: flex;
 align-items: center;
 }
 
+.custom-date-time-picker-value {
+  width: 100%;
+}
+
 .custom-date-time-pick{
   background-color: white;
-  border: 1px solid #282a367e;
+  border: 1px solid var(--border-primary);
   padding: .85rem .95rem;
   cursor: pointer;
-  min-width: 12rem;
-  max-height: 2.5rem;
+  width: 16rem;
+  height: 100%;
   display: flex;
+  /*gap: .5rem;*/
   align-items: center;
-  justify-content: space-between;
-  gap: 2.5rem;
   border-radius: .5rem;
+  box-sizing: border-box;
+  position: relative;
 }
 .custom-time-input-container {
   display: flex;
   align-items: center;
   gap: .5rem;
 }
+
 
 .custom-time-input-container>span {
   display: flex;
@@ -375,7 +427,7 @@ align-items: center;
 .custom-time-input {
   background-color: transparent;
   border: none;
-  color: #282a367b;
+  color: var(--font-primary);
   cursor: pointer;
   font-family: "Poppins", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   text-decoration: none;
@@ -386,6 +438,180 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   filter: invert(17%) sepia(8%) saturate(1034%) hue-rotate(186deg) brightness(94%) contrast(88%);
 }
 
+
+
+/*.custom-date-time-pick .react-datepicker-wrapper:nth-of-type(1){
+  position: absolute !important;
+  top: 0 !important;
+  left: .75rem !important;
+  width: 10rem !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  padding-left: .5rem !important;
+  margin-right: .5rem;
+}
+
+.custom-date-time-pick .react-datepicker-wrapper:nth-of-type(2) {
+  position: absolute !important;
+  top: 0 !important;
+  right:  .15rem !important;
+  width: 2rem !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}*/
+
+
+.react-datepicker {
+  border: 1px solid var(--border-primary);
+  padding: .75rem 1.5rem;
+  border-radius: .5rem;
+  background-color: white;
+position: relative;
+}
+
+.react-datepicker-popper {
+  z-index: 1000;
+}
+
+
+
+.react-datepicker__week{
+  display: flex;
+}
+
+
+.react-datepicker__tab-loop {
+
+}
+
+.react-datepicker__day-names  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 0.25rem;
+}
+
+.react-datepicker__day-name{
+  font-weight: 600;
+}
+
+.react-datepicker__day:hover {
+  cursor: pointer;
+  background-color: var(--bg-seconday);
+  border-radius: 50%;
+}
+
+
+.react-datepicker__triangle {
+  display: none;
+}
+
+
+
+.react-datepicker__navigation--next,
+.react-datepicker__navigation--previous {
+  border: 1px solid #282a367e;
+  border-radius: .25rem;
+  background-color: var(--bg-transparent);
+  color: var(--font-primary);
+  padding: .25rem;
+}
+
+.react-datepicker__navigation{
+display: none !important;
+}
+
+.react-datepicker__header__dropdown--select {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--bg-transparent);
+
+}
+
+.react-datepicker__header__dropdown{
+  margin: .25rem 0;
+}
+
+.react-datepicker__current-month {
+font-weight: 500;
+}
+
+
+
+.react-datepicker__month-select,
+.react-datepicker__year-select{
+  background-color: white;
+  border: 1px solid var(--border-primary);
+  border-radius: .25rem;
+  margin: 0 .25rem;
+  padding: .25rem .5rem;
+  color: var(--font-primary);
+  font-family: "Poppins", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+}
+
+.react-datepicker__aria-live {
+  display: none !important;
+}
+
+.react-datepicker__time-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 20rem;
+  width: 7rem;
+overflow-y: scroll;
+}
+
+.react-datepicker__time {
+display: flex;
+flex-direction: column;
+  align-items: flex-start;
+  overflow-y: scroll;
+}
+
+.react-datepicker__time-box{
+  height: inherit;
+}
+
+.react-datepicker-time__header{
+  display: none;
+}
+
+.react-datepicker__time-list{
+  text-decoration: none;
+  list-style: none;
+padding: 0;
+}
+
+
+
+
+.react-datepicker__time-list-item {
+  /*border-radius: .25rem;*/
+  padding: .65rem .75rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.react-datepicker__time-list-item:hover {
+background-color:var(--bg-seconday);
+  border-radius: .25rem;
+}
 
 
 

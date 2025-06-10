@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {SearchBar} from "@/services/types";
 import CustomDateInput from "@/components/CustomDateInput";
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import { PiMagnifyingGlassThin } from "react-icons/pi";
 
 
 
@@ -38,7 +39,7 @@ const SearchBar: React.FC<SearchBar> = (
             <div className="search-bar-input-container">
                 <div className={"search-bar-custom-input-container"}>
                     <input type="text" className={"search-bar-custom-input"}/>
-                    <FaMagnifyingGlass className={"magnifying-glass"} style={{color: "grey"}}/>
+                    <PiMagnifyingGlassThin className={"magnifying-glass"}  size={20}/>
                 </div>
                 <CustomDateInput
                     startDate={startingDate}
@@ -58,14 +59,7 @@ const SearchBar: React.FC<SearchBar> = (
                         <div className="search-bar-filter-level-options">
                             {levelOptions.map(levelOption => (
                                 <div key={levelOption} className="filter-button-container">
-                                    <input
-                                        type="checkbox"
-                                        id={`level-${levelOption}`}
-                                        checked={levelFilter.includes(levelOption)}
-                                        className="filter-button"
-                                        // onChange handler here
-                                    />
-                                    <label htmlFor={`level-${levelOption}`}>{capitalize(levelOption)}</label>
+                                    <button className="filter-button">{capitalize(levelOption)}</button>
                                 </div>
                             ))}
                         </div>
@@ -75,14 +69,9 @@ const SearchBar: React.FC<SearchBar> = (
                         <div className="search-bar-filter-method-options">
                             {methodOptions.map(methodOption => (
                                 <div key={methodOption} className="filter-button-container">
-                                    <input
-                                        type="checkbox"
-                                        id={`method-${methodOption}`}
-                                        checked={methodFilter.includes(methodOption)}
-                                        className="filter-button"
-                                        // onChange handler here
-                                    />
-                                    <label htmlFor={`method-${methodOption}`}>{capitalize(methodOption)}</label>
+                                    <div key={methodOption} className="filter-button-container">
+                                        <button className="filter-button">{capitalize(methodOption)}</button>
+                                    </div>
                                 </div>
                             ))}
                         </div>
