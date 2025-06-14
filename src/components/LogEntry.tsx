@@ -24,7 +24,7 @@ export default function LogEntry(
     // Format timestamp - M/D/Y, 0:00:00 PM
     function formatTimestamp(timestamp: string): string {
         const date = new Date(timestamp);
-        return date.toLocaleString();
+        return date.toLocaleString("en-US", { hour12: false });
     }
 
     // Change font color based on level
@@ -63,6 +63,9 @@ export default function LogEntry(
         // A single log row
         <div className={`log-item-container ` }>
             <div className="log-item-attribute">
+                <span style={{ color: "grey" }}>{formatTimestamp(timestamp)}</span>
+            </div>
+            <div className="log-item-attribute">
                 <span style={{ color: getLevelColor(level) }} className="log-item-icon">{getLevelIcon(level)}</span>
                 <span style={{ color: getLevelColor(level) }} className="log-item-level">{level}</span>
             </div>
@@ -70,7 +73,7 @@ export default function LogEntry(
                 <span style={{ color: "green" }}>{source}</span>
             </div>
             <div className="log-item-attribute">
-                <span style={{ color: "grey" }}>{formatTimestamp(timestamp)}</span>
+                <span>{method}</span>
             </div>
             <div className="log-item-attribute">
                 <span>{message}</span>

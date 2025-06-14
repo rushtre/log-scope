@@ -8,16 +8,12 @@ export default function CustomDateInput(
     {
         startDate,
         endDate,
-        startTime,
-        endTime,
         onStartDateChange,
         onEndDateChange,
-        onStartTimeChange,
-        onEndTimeChange,
     }: CustomDateInput
 ) {
 
-    const CustomInput = React.forwardRef<HTMLDivElement, {
+    const DateInput = React.forwardRef<HTMLDivElement, {
         value?: string;
         onClick?: () => void;
         icon: React.ReactNode;
@@ -41,8 +37,8 @@ export default function CustomDateInput(
             <div className={"custom-react-datetime-picker"}>
                 <DatePicker
                     selected={startDate}
-                    dateFormat="MM/dd/yyyy h:mm aa"
-                    customInput={<CustomInput icon={<CiCalendar size={20}/>} placeholder={"Start Date"} text={"Start Date"}/>}
+                    dateFormat="MM/dd/yyyy HH:mm"
+                    customInput={<DateInput icon={<CiCalendar size={25}/>} placeholder={"Start Date"} text={"Start Date"}/>}
                     locale={enUS}
                     onChange={onStartDateChange}
                     showMonthDropdown
@@ -50,8 +46,9 @@ export default function CustomDateInput(
                     dropdownMode="select"
                     yearDropdownItemNumber={10}
                     showTimeSelect
-                    timeFormat="h:mm aa"
+                    timeFormat="HH:mm"
                     timeIntervals={15}
+                    maxDate={new Date()}
                     isClearable
                 />
             </div>
@@ -59,8 +56,8 @@ export default function CustomDateInput(
             <div className={"custom-react-datetime-picker"}>
                 <DatePicker
                     selected={endDate}
-                    dateFormat="MM/dd/yyyy h:mm aa"
-                    customInput={<CustomInput icon={<CiCalendar size={20}/>} placeholder={"End Date"} text={"End Date"} />}
+                    dateFormat="MM/dd/yyyy HH:mm "
+                    customInput={<DateInput icon={<CiCalendar size={25}/>} placeholder={"End Date"} text={"End Date"} />}
                     locale={enUS}
                     onChange={onEndDateChange}
                     showMonthDropdown
@@ -68,7 +65,8 @@ export default function CustomDateInput(
                     dropdownMode="select"
                     yearDropdownItemNumber={10}
                     showTimeSelect
-                    timeFormat="h:mm aa"
+                    timeFormat="HH:mm"
+                    maxDate={new Date()}
                     timeIntervals={15}
                     isClearable
                 />

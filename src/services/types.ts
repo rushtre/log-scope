@@ -14,31 +14,38 @@ export interface LogEntry {
     tags?: string[],
 }
 
-export interface LogsContainer {
-    logs: LogEntry[],
-    logFirstIndex: number,
-    logLastIndex: number,
-    currentPage: number,
-    totalPages: number,
-    onPageChange: (page: number) => void
-}
-
-export interface SearchBar{
-    level?: ("ERROR" | "WARN" | "INFO" | "DEBUG")[];
-    method?: ("POST" | "GET" | "PUT" | "PATCH" | "DELETE")[];
-    searchText?: string,
-    onSearchTextChange?: (text: string) => void,
-    onLevelChange?: (levels: ("ERROR" | "WARN" | "INFO" | "DEBUG")[]) => void,
-    onMethodChange?: (methods: ("POST" | "GET" | "PUT" | "PATCH" | "DELETE")[]) => void
+export interface SearchBar {
+    searchFilters: SearchFilters;
+    onSearchUpdate: (filters: Partial<SearchFilters>) => void;
 }
 
 export interface CustomDateInput {
     startDate: Date | null,
     endDate: Date | null,
-    startTime: Date | null,
-    endTime: Date | null,
     onStartDateChange : (date: Date | null ) => void,
     onEndDateChange : (date: Date | null) => void,
-    onStartTimeChange : (date: Date | null) => void,
-    onEndTimeChange : (date: Date | null) => void
+}
+
+export interface VirtualScrollContainer{
+    logs: LogEntry[],
+    itemHeight: number,
+    containerHeight: number,
+    sortConfig: SortConfig,
+    onSortChange: (sortBy: SortConfig['sortBy'], order?: SortConfig['order']) => void;
+    onSearchUpdate: (filters: Partial<SearchFilters>) => void;
+    searchFilters: SearchFilters;
+    overscan?: number,
+}
+
+export interface SearchFilters {
+    levels: string[];
+    methods: string[];
+    searchText: string;
+    startDate: Date | null;
+    endDate: Date | null;
+}
+
+export interface SortConfig {
+    sortBy: 'timestamp' | 'level' | 'source' | 'method';
+    order: 'asc' | 'desc';
 }

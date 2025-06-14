@@ -31,6 +31,7 @@
 
   --border-primary:#6e7f80 ;
   --border-secondary: #fff;
+  --border-tertiary: #282a36;
 
 
   --btn-primary: #36454f
@@ -80,7 +81,7 @@
 }
 
 
-/*---------------------------- LOGS CONTAINER STYLING ----------------------------*/
+/*---------------------------- VIRTUAL SCROLL CONTAINER STYLING ----------------------------*/
 
 .logs-container {
   position: relative;
@@ -90,6 +91,7 @@
   width: 95rem;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 8px 32px 4px rgba(0, 0, 0, 0.1);
   z-index: auto;
 }
 
@@ -100,81 +102,6 @@
   border-bottom: 1px solid var(--border-primary);
 }
 
-.logs-title {
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: var(--font-secondary);
-}
-
-.logs-title:nth-child(1) {
-  flex: 0 0 120px;
-  padding-left: .65rem;
-}
-
-.logs-title:nth-child(2) {
-  flex: 0 0 200px;
-}
-
-.logs-title:nth-child(3) {
-  flex: 0 0 220px;
-}
-
-.logs-title:nth-child(4) {
-  flex: 1;
-}
-
-.logs-list {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.4s ease-in-out;
-}
-
-.logs-list > *:nth-child(odd) {
-  background-color: var(--bg-seconday);
-}
-
-.logs-list.transitioning {
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-.logs-pagination {
-  display: flex;
-}
-
-.logs-pagination>button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  border: none;
-  background-color: var(--bg-transparent);
-  height: 2.15rem;
-  width: 2.15rem;
-  margin: 0 .25rem;
-  border-radius: 50%;
-  color: #282A36;
-}
-
-.logs-pagination>button:hover {
-  cursor: pointer;
-  background-color: #282a360d;
-}
-
-.logs-pagination>button.active {
-  background-color: #282a360d;
-}
-
-.logs-footer-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid var(--border-primary);
-  height: 3rem;
-  padding-top: .45rem;
-  margin-top: 1.35rem;
-}
-
 .logs-count {
   display: flex;
   justify-content: center;
@@ -183,7 +110,6 @@
 }
 
 .logs-hero>text,
-.logs-count>text,
 .filter-label,
 .logs-total {
   color: #282a367b;
@@ -195,13 +121,75 @@
   padding-bottom: 5rem;
 }
 
+.logs-title {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--font-secondary);
+  cursor: pointer;
+}
+
+.logs-title:nth-child(1) {
+  flex: 0 0 220px;
+  padding-left: .65rem;
+}
+
+.logs-title:nth-child(2) {
+  flex: 0 0 120px;
+}
+
+.logs-title:nth-child(3) {
+  flex: 0 0 220px;
+}
+
+.logs-title:nth-child(4) {
+  flex: 0 0 150px;
+}
+
+.logs-title:nth-child(5) {
+  flex: 1;
+}
+
+.logs-title.sortable.active {
+  color: var(--font-primary);
+}
+
+.virtual-scroll-item {
+  display: flex;
+  align-items: center;
+  border-radius: .5rem;
+}
+
+.virtual-scroll-item.even {
+  background-color: var(--bg-seconday);
+}
+
+.virtual-scroll-viewport::-webkit-scrollbar {
+  width:.5rem;
+  margin-left: .5rem;
+}
+
+.virtual-scroll-viewport::-webkit-scrollbar-track {
+  /*background: var(--bg-seconday);*/
+  border-radius: 4px;
+}
+
+.virtual-scroll-viewport::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+  border-radius: 4px;
+}
+
+.virtual-scroll-viewport::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+
+
 /*---------------------------- LOG ENTRY STYLING ---------------------------- */
 
 .log-item-container {
   display: flex;
   align-items: center;
   padding: .65rem 0;
-  margin-bottom: .5rem;
   border-radius: .25rem;
 }
 
@@ -225,19 +213,22 @@
 }
 
 .log-item-attribute:nth-child(1) {
-  flex: 0 0 120px;
+  flex: 0 0 220px;
   padding-left: .65rem;
 }
 
 .log-item-attribute:nth-child(2) {
-  flex: 0 0 200px;
+  flex: 0 0 120px;
 }
 
 .log-item-attribute:nth-child(3) {
   flex: 0 0 220px;
 }
-
 .log-item-attribute:nth-child(4) {
+  flex: 0 0 150px;
+}
+
+.log-item-attribute:nth-child(5) {
   flex: 1;
 }
 
@@ -253,25 +244,16 @@
   flex-direction: column;
 }
 
-.search-bar-date-time-container {
-  display: flex;
-  align-items: center;
-}
-
 .search-bar-input-container {
   display: flex;
   align-items: center;
   margin-bottom: .75rem;
-  gap: .85rem;
-  height: 2.4rem;
+  gap: 1rem;
 }
 
 .search-bar-input-container>input {
-  height: 100%;
-  width: 20rem;
   text-decoration: none;
   background-color: var(--bg-primary);
-  padding: 0 .5rem;
   font-family: "Poppins", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
@@ -285,6 +267,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .search-bar-filter-level-container,
@@ -302,13 +285,9 @@ padding-bottom: .5rem;
 .search-bar-filter-level-options,
 .search-bar-filter-method-options {
   display: flex;
-  gap: .95rem;
+  gap: .5rem;
 }
 
-.filter-button-container {
-  display: flex;
-  gap: .20rem;
-}
 
 
 .filter-button{
@@ -319,11 +298,17 @@ padding-bottom: .5rem;
   height: 1.75rem;
   width: 4rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: "Poppins", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  transition: all 0.2s ease-in-out;
 }
 
 .filter-button:hover {
-  border: 2px solid var(--border-primary);
+  /*border: 3px solid var(--border-tertiary);*/
+  background-color: var(--btn-primary);
+  color: var(--font-tertiary);
 }
 
 .search-bar-search-button {
@@ -334,10 +319,17 @@ padding-bottom: .5rem;
   font-size: 1em;
   font-family: "Poppins", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   background-color: var(--btn-primary);
+  transition: all 0.2s ease-in-out;
 }
 
 .search-bar-search-button:hover {
   cursor: pointer;
+  transform: scale(1.04);
+  /*box-shadow: 0 8px 25px 4px rgba(0, 0, 0, 0.1);*/
+}
+
+.search-bar-search-button:active {
+  transform: scale(1);
 }
 
 .search-bar-custom-input {
@@ -350,6 +342,10 @@ padding-bottom: .5rem;
   border: 1px solid var(--border-primary);
   border-radius: .5rem;
   width: 20rem;
+}
+
+.search-bar-custom-input:hover{
+  border: 3px solid var(--border-primary);
 }
 
 .search-bar-custom-input:focus {
@@ -375,20 +371,24 @@ padding-bottom: .5rem;
 /*---------------------------- CUSTOM DATE/TIME STYLING ----------------------------*/
 
 .custom-input-container {
+  gap: .35rem;
+  color: var(--font-primary);
   display: flex;
   align-items: center;
-  gap: .25rem;
-  color: var(--font-primary);
+
+  justify-content: center;
+  width: 100%;
 }
+
+
+
+
 
 
 .custom-input-value {
-  padding-right: .5rem;
-}
-
-.custom-input-icon {
-  display: flex;
-  align-items: center;
+  font-size: .95rem;
+  padding-right: .25rem ;
+  height: 100%;
 }
 
 
@@ -397,24 +397,25 @@ padding-bottom: .5rem;
 .custom-react-datetime-picker-container {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  height: 100%
+  gap: .75rem;
 }
 
 .custom-react-datetime-picker{
   background-color: var(--bg-primary);
   border: 1px solid var(--border-primary);
   padding: .30rem .95rem;
-  height: 100%;
   cursor: pointer;
-  width: 16rem;
+  width: 15rem;
   border-radius: .5rem;
-  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
 }
+
+
 
 .react-datepicker-popper {
   z-index: 1000;
 }
+
 
 .react-datepicker {
   border: 1px solid var(--border-primary);
@@ -432,8 +433,6 @@ padding-bottom: .5rem;
 
 .react-datepicker__day-names  {
   display: flex;
-  align-items: center;
-  justify-content: center;
   border-bottom: 1px solid var(--border-primary);
   margin-bottom: .5rem;
 }
@@ -447,6 +446,7 @@ padding-bottom: .5rem;
   justify-content: center;
   text-align: center;
   border-radius: 0.25rem;
+  text-decoration: none;
 }
 
 .react-datepicker__day-name{
@@ -455,8 +455,7 @@ padding-bottom: .5rem;
 
 .react-datepicker__day:hover,
 .react-datepicker__day:focus,
-.react-datepicker__day:active{
-  text-decoration: none;
+.react-datepicker__day:active {
   cursor: pointer;
   background-color: var(--bg-seconday);
   border-radius: 50%;
@@ -564,10 +563,12 @@ background-color:var(--bg-seconday);
 }
 
 .react-datepicker__input-container {
-  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 }
+
 .react-datepicker__close-icon {
   background-color: var(--bg-transparent);
   border: none;
@@ -577,7 +578,6 @@ background-color:var(--bg-seconday);
   width: 1rem;
   display: flex;
   align-items: center;
-  position: relative;
 }
 
 .react-datepicker__close-icon::after {
@@ -590,10 +590,10 @@ background-color:var(--bg-seconday);
   font-size: 1rem;
   font-weight: 600;
   color: var(--font-error);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  /*position: absolute;*/
+  /*top: 50%;*/
+  /*left: 50%;*/
+  /*transform: translate(-50%, -50%);*/
 }
 
 

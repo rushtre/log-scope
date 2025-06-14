@@ -1,24 +1,63 @@
-import { useState } from "react";
+import {use, useMemo, useState} from "react";
 import log_data from "./data/log_data.json";
 import "./index.css";
-import LogsContainer from "./components/LogsContainer";
+import {LogSearchEngine} from "@/services/LogSearchEngine";
 import { BsTerminal } from "react-icons/bs";
+import {LogEntry, SearchFilters, SortConfig} from "@/services/types";
+import VirtualScrollContainer from "@/components/VirtualScrollContainer";
+
 
 
 
 
 export function App() {
 
-  const [logs, setLogs] = useState(log_data.logs)
-  const [currentPage, setCurrentPage] = useState(1);
-  const logsPerPage = 10;
+  const [logs] = useState<LogEntry[]>(log_data.logs)
 
-  // Calculate pagination
-  const indexOfLastLog = currentPage * logsPerPage;
-  const indexOfFirstLog = indexOfLastLog - logsPerPage;
+  const [searchFilters, setSearchFilters] = useState<SearchFilters>({
+    levels: [],
+    methods: [],
+    searchText: '',
+    startDate: null,
+    endDate: null,
+  })
 
-  const currentLogs = logs.slice(indexOfFirstLog, indexOfLastLog);
-  const totalPages = Math.ceil(logs.length / logsPerPage);
+  const [sortConfig, setSortConfig] = useState<SortConfig>({
+    sortBy: 'timestamp',
+    order: 'desc'
+  })
+
+
+  const searchEngine= useMemo(() => new LogSearchEngine(logs), [logs])
+
+
+  const processedLogs = useMemo(() => {
+    const startTime = performance.now()
+    const results = searchEngine.searchAndSort(
+        searchFilters,
+        sortConfig.sortBy,
+        sortConfig.order,
+    );
+
+    const duration = performance.now() - startTime;
+    console.log(`Processed ${logs.length} logs in ${duration.toFixed(2)}ms`);
+    return results;
+  }, [searchEngine, searchFilters, sortConfig, logs])
+
+  const handleSearchUpdate = (newFilters: Partial<SearchFilters>) => {
+    setSearchFilters(prev => ({ ...prev, ...newFilters }));
+  };
+
+  const handleSort = (
+      sortBy: SortConfig['sortBy'],
+      order?: SortConfig['order'],
+  ) => {
+    setSortConfig(prev => ({
+      sortBy,
+      order: order || (prev.sortBy === sortBy && prev.order === 'desc' ? 'asc' : 'desc' ),
+    }));
+  }
+
 
   return (
     <div className="app">
@@ -28,16 +67,17 @@ export function App() {
             <span><BsTerminal size={25} /></span>
             <h3>Logs</h3>
           </div>
-          <LogsContainer
-            logs={currentLogs}
-            logFirstIndex={indexOfFirstLog}
-            logLastIndex={indexOfLastLog}
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage} />
+         <VirtualScrollContainer
+             logs={processedLogs}
+             itemHeight={60}
+             sortConfig={sortConfig}
+             onSortChange={handleSort}
+             searchFilters={searchFilters}
+             onSearchUpdate={handleSearchUpdate}
+             containerHeight={600}
+             overscan={3}/>
         </div>
       </div>
     </div>
   );
 }
-

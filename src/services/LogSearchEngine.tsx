@@ -1,50 +1,82 @@
 
-import {LogEntry} from "@/services/types";
+import {LogEntry, SearchFilters} from "@/services/types";
 
 
-class LogSearchEngine {
-
-    private byLevel = new Map <string, LogEntry[]>();
-    private bySource = new Map <string, LogEntry[]>();
-    private byTimestamp = new Map <string, LogEntry[]>();
-    private byMessage = new Map <string, LogEntry[]>();
-
+export class LogSearchEngine {
+    private logs: LogEntry[];
     constructor(logs: LogEntry[]) {
-        this.buildIndexes(logs)
+        this.logs = logs;
     }
+sort (
+    logs: LogEntry[],
+    sortBy: 'timestamp' | 'level' | 'source' | 'method',
+    order: 'asc' | 'desc' = 'desc',
+): LogEntry[] {
+        const sortedLogs = [...logs].sort((a, b) => {
+            let comparison = 0;
 
-    // Index data by their attributes
-    private buildIndexes(logs: LogEntry[]) {
-            for (const log of logs) {
-                this.addToIndex(this.byLevel, log.level, log);
-                this.addToIndex(this.bySource, log.source, log);
-                this.addToIndex(this.byTimestamp, log.timestamp, log);
-                this.addToIndex(this.byMessage, log.message, log);
+            switch(sortBy) {
+                case 'timestamp':
+                    comparison = new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
+                    break;
+                case 'level':
+                    const levelOrder = {ERROR: 4, WARN: 3, INFO: 2, DEBUG: 1};
+                    comparison = (levelOrder[a.level as keyof typeof levelOrder] || 0) - (levelOrder[b.level as keyof typeof levelOrder] || 0 )
+                    break;
+                case 'source':
+                    comparison = a.source.localeCompare(b.source)
+                    break;
+                case 'method':
+                    const methodOrder = {POST: 5, PUT: 4, PATCH: 3, GET: 2, DELETE: 1}
+                    const aMethod = a.method as keyof typeof methodOrder;
+                    const bMethod = b.method as keyof typeof methodOrder;
+                    comparison = (methodOrder[aMethod] || 0) - (methodOrder[bMethod] || 0)
+                    break;
+                default:
+                    return 0;
             }
-    }
+            return order === 'asc' ? comparison : -comparison;
+        });
 
-    // Function to help insert a log to its respective group
-    private addToIndex<K>(map: Map<K, LogEntry[]>, key: K, log: LogEntry) {
-        if (!map.has(key)) {
-            map.set(key, []);
-        }
-        map.get(key)!.push(log);
-    }
+        return sortedLogs;
+}
 
-    getErrorLogs() {
-        return this.byLevel.get('ERROR') ?? [];
-    }
+filter(logs: LogEntry[], filters: SearchFilters): LogEntry[] {
+        return logs.filter(log => {
+            // Level filter
+            if (filters.levels && filters.levels.length > 0) {
+                if (!filters.levels.includes(log.level)) return false;
+            }
 
-    getLogsBySource(source: string) {
-        return this.bySource.get(source) ?? [];
-    }
+            // Method filter
+            if (filters.methods && filters.methods.length > 0) {
+                if (!log.method || !filters.methods.includes(log.method)) return false;
+            }
 
-    getLogsByTimestamp(timestamp: string) {
-        return this.byTimestamp.get(timestamp) ?? [];
-    }
+            // Text search
+            if (filters.searchText) {
+                const searchLower = filters.searchText.toLowerCase();
+                const searchableText = `${log.message} ${log.source} ${log.application || ''}`.toLowerCase();
+                if (!searchableText.includes(searchLower)) return false;
+            }
 
-    getLogsByMessage(message: string) {
-        return this.byMessage.get(message) ?? [];
-    }
+            // Date range filter
+            if (filters.startDate || filters.endDate) {
+                const logDate = new Date(log.timestamp);
+                if (filters.startDate && logDate < filters.startDate) return false;
+                if (filters.endDate && logDate > filters.endDate) return false;
+            }
+            return true;
+        })
+}
+searchAndSort(
+    filters: SearchFilters,
+    sortBy: 'timestamp' | 'level' | 'source' | 'method' = 'timestamp',
+    order: 'asc' | 'desc' = 'desc',
+): LogEntry[] {
+        const filtered = this.filter(this.logs, filters);
+        return this.sort(filtered, sortBy, order);
+}
+
 
 }
