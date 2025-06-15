@@ -40,7 +40,6 @@ export function App() {
     );
 
     const duration = performance.now() - startTime;
-    console.log(`Processed ${logs.length} logs in ${duration.toFixed(2)}ms`);
     return results;
   }, [searchEngine, searchFilters, sortConfig, logs])
 

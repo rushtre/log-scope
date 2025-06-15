@@ -14,7 +14,6 @@ sort (
 ): LogEntry[] {
         const sortedLogs = [...logs].sort((a, b) => {
             let comparison = 0;
-
             switch(sortBy) {
                 case 'timestamp':
                     comparison = new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()

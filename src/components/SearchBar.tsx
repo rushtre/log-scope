@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {SearchBar, SearchFilters} from "@/services/types";
 import CustomDateInput from "@/components/CustomDateInput";
 import { PiMagnifyingGlassThin } from "react-icons/pi";
+import { MdOutlineFilterListOff } from "react-icons/md";
 
 const SearchBar: React.FC<SearchBar> = (
     {
@@ -66,6 +67,16 @@ const SearchBar: React.FC<SearchBar> = (
         });
     };
 
+    const hasActiveFilters = () => {
+        return (
+            searchFilters.levels.length > 0 ||
+            searchFilters.methods.length > 0 ||
+            searchFilters.searchText.trim() !== '' ||
+            searchFilters.startDate !== null ||
+            searchFilters.endDate !== null
+        );
+    };
+
     return (
         <div className="search-bar-container">
             <div className="search-bar-input-container">
@@ -111,7 +122,7 @@ const SearchBar: React.FC<SearchBar> = (
                             ))}
                         </div>
                     </div>
-                    <button className="search-bar-search-button" onClick={handleClearFilters}>Clear</button>
+                    <button className="search-bar-search-button" onClick={handleClearFilters} disabled={!hasActiveFilters()}><MdOutlineFilterListOff size={20}/>  <span className={"clear-text"}>Reset</span></button>
                 </div>
             </div>
         </div>

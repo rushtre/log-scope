@@ -11,10 +11,11 @@ export default function VirtualScrollContainer({
     onSortChange,
     searchFilters,
     onSearchUpdate,
-    overscan = 3
+    overscan = 7
 }: VirtualScrollContainer) {
 
     const [scrollTop, setScrollTop] = useState(0);
+    const currentItemIndex = Math.floor(scrollTop / itemHeight);
 
     const visibleRange = useMemo(() => {
         const startIndex = Math.floor(scrollTop / itemHeight);
@@ -26,14 +27,17 @@ export default function VirtualScrollContainer({
             start: Math.max(0, startIndex - overscan),
             end: endIndex
         };
-    }, [scrollTop, itemHeight, containerHeight, logs.length, overscan])
+    }, [currentItemIndex, itemHeight, containerHeight, logs.length, overscan])
 
     const visibleItems = useMemo(() => {
         return logs.slice(visibleRange.start, visibleRange.end);
     }, [logs, visibleRange]);
 
     const handleScroll = useCallback((e: React.UIEvent<HTMLDivElement>) => {
-        setScrollTop(e.currentTarget.scrollTop);
+        const scrollTop = e.currentTarget.scrollTop;
+        requestAnimationFrame(() => {
+            setScrollTop(scrollTop);
+        });
     }, [])
 
     const handleColumnSort = (column: SortConfig['sortBy']) => {
@@ -41,7 +45,8 @@ export default function VirtualScrollContainer({
     };
 
     const totalHeight = logs.length * itemHeight
-    const offsetY = visibleRange.start * itemHeight
+    // const offsetY = Math.round(visibleRange.start * itemHeight)
+
 
 return (
     <div className={"logs-container" }>
@@ -83,24 +88,24 @@ return (
         <div className={"virtual-scroll-viewport"}
              style={{
                  height: containerHeight,
-                 overflowY: "auto"
+                 overflowY: "auto",
+                 marginRight: ".5rem"
             }}
              onScroll={handleScroll}
         >
             <div style={{ height: totalHeight, position: 'relative' }}>
-            <div style={{
-                transform: `translateY(${offsetY})px`,
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0
-            }}>
                 {visibleItems.map((log, index) => {
                     const actualIndex = visibleRange.start + index;
                     return (
                         <div
                             key={log.id}
-                            style={{ height: itemHeight }}
+                            style={{
+                                position: 'absolute',
+                                top: actualIndex * itemHeight,
+                                height: itemHeight,
+                                left: 0,
+                                right: 0
+                            }}
                             className={`virtual-scroll-item ${actualIndex % 2 === 1 ? 'odd' : 'even'}`}
                         >
                             <LogEntry {...log} />
@@ -110,7 +115,6 @@ return (
             </div>
         </div>
         </div>
-    </div>
 )
 
 
