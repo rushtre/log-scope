@@ -1,7 +1,7 @@
 import DatePicker from "react-datepicker";
 import { enUS } from 'date-fns/locale';
-import { CiCalendar, CiClock2 } from "react-icons/ci";
-import React, {useState} from "react";
+import { CiCalendar } from "react-icons/ci";
+import React  from "react";
 import {CustomDateInput} from "@/services/types";
 
 export default function CustomDateInput(

@@ -1,4 +1,4 @@
-import {use, useMemo, useState} from "react";
+import { useMemo, useState} from "react";
 import log_data from "./data/log_data.json";
 import "./index.css";
 import {LogSearchEngine} from "@/services/LogSearchEngine";
@@ -26,10 +26,8 @@ export function App() {
     sortBy: 'timestamp',
     order: 'desc'
   })
-
-
+  
   const searchEngine= useMemo(() => new LogSearchEngine(logs), [logs])
-
 
   const processedLogs = useMemo(() => {
     const startTime = performance.now()

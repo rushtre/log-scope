@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {SearchBar, SearchFilters} from "@/services/types";
+import {SearchBar} from "@/services/types";
 import CustomDateInput from "@/components/CustomDateInput";
 import { PiMagnifyingGlassThin } from "react-icons/pi";
 import { MdOutlineFilterListOff } from "react-icons/md";

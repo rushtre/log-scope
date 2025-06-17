@@ -12,13 +12,6 @@ export default function LogEntry(
         method,
         timestamp,
         message,
-        user_id,
-        ip_address,
-        response_time,
-        status_code,
-        endpoint,
-        application,
-        tags
     }: LogEntry) {
 
     // Format timestamp - M/D/Y, 0:00:00 PM
